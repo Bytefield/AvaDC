@@ -3,6 +3,9 @@ import { Row } from 'reactstrap';
 import axios from 'axios'
 import Unit from './Unit'
 
+let BASE_URL = process.env.BASE_URL
+let TOKEN = process.env.TOKEN
+
 class Container extends Component {
   constructor(props) {
     super(props);
@@ -19,9 +22,9 @@ class Container extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://netboxqa.xcade.net/api/dcim/racks/', {
+    axios.get(BASE_URL + '/dcim/racks/', {
       headers: {
-        'Authorization': 'Token 467c528e78698047e8af1557597712c7e5073ad6'
+        'Authorization': 'Token ' + TOKEN
       }
     })
     .then(response => {
